@@ -1,0 +1,120 @@
+/* Navigation styling */
+nav {
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    padding: 0 100px;
+    position: relative;
+    background-image: linear-gradient(#033747, #012733);
+    margin: 0;
+}
+
+nav .logo p {
+    font-size: 30px;
+    font-weight: bold;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+}
+
+nav ul {
+    float: right;
+}
+
+nav li {
+    display: inline-block;
+    list-style: none;
+}
+
+nav li a {
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0 30px;
+    color: white;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: #ff8c69;
+    transition: all 0.4s ease 0s;
+}
+
+/* Body styling */
+body {
+    background: url(images/MontainSilouette.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Hide park type dropdown */
+#parkTypeSelect {
+    display: none;
+}
+
+#nationalPark {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 9%;
+}
+
+#nationalPark {
+    direction: rtl;
+    justify-content: space-between;
+    align-content: flex-start;
+}
+
+#nationalParkHome {
+    direction: ltr;
+    margin-top: 6%;
+}
+
+#searchContent {
+    margin-top: 3%; /* Adjusted spacing */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#dropDownSelects {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1%; /* Adjusted spacing */
+}
+
+/* Radio button styling */
+.form-check-input {
+    transform: scale(0.8); /* Adjust the scale factor to make the radio buttons smaller */
+}
+
+/* Park detail row styling */
+#parkDetailRow {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Cards for mountain and national parks */
+.card {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    align-content: center;
+    justify-content: space-evenly;
+    font-size: large;
+    font-weight: 900;
+    flex-grow: 0;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.5s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+img.mountainImage {
+    width: 50%;
+}
