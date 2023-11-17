@@ -1,6 +1,6 @@
 "use strict";
 
-// Define variables to hold HTML references
+// Retrieve HTML element references
 const locationOption = document.getElementById("locationOption");
 const parkTypeOption = document.getElementById("parkTypeOption");
 const locationDropDown = document.getElementById("locationDropDown");
@@ -9,77 +9,82 @@ const parkTypeSelect = document.getElementById("parkTypeSelect");
 const locationSelect = document.getElementById("locationSelect");
 const parkDetailRow = document.getElementById("parkDetailRow");
 
-// Execute functions after the window finishes loading
+// Execute functions once the window has loaded
 window.onload = () => {
-    locationOption.onchange = onLocationOptionChange;
-    parkTypeOption.onchange = onParkTypeOptionChange;
-    locationDropDown.onchange = locationDropDownChange;
-    parkTypeDropDown.onchange = parkTypeDropDownChange;
+    // Set up event handlers for option changes and dropdown selections
+    locationOption.onchange = handleLocationOptionChange;
+    parkTypeOption.onchange = handleParkTypeOptionChange;
+    locationDropDown.onchange = handleLocationDropDownChange;
+    parkTypeDropDown.onchange = handleParkTypeDropDownChange;
 
-    // Populate location dropdown
+    // Populate the location dropdown with states
     for (let state of locationsArray) {
         let newOption = new Option(state);
         locationDropDown.appendChild(newOption);
     }
 
-    // Populate park type dropdown
+    // Populate the park type dropdown with types
     for (let type of parkTypesArray) {
         let newOption = new Option(type);
         parkTypeDropDown.appendChild(newOption);
     }
 };
 
-// Function to hide or show location radio button
-function onLocationOptionChange() {
+// Toggle display based on location option selection
+function handleLocationOptionChange() {
     if (locationOption.checked) {
+        // Show location dropdown, hide park type dropdown, clear park details
         locationSelect.style.display = "block";
         parkTypeSelect.style.display = "none";
         parkDetailRow.innerHTML = "";
-        locationDropDown.selectedIndex = 0;
+        locationDropDown.selectedIndex = 0; // Reset dropdown selection
     } else {
-        locationSelect.style.display = "none";
+        locationSelect.style.display = "none"; // Hide location dropdown
     }
 }
 
-// Function to hide or show park type radio button
-function onParkTypeOptionChange() {
+// Toggle display based on park type option selection
+function handleParkTypeOptionChange() {
     if (parkTypeOption.checked) {
+        // Show park type dropdown, hide location dropdown, clear park details
         parkTypeSelect.style.display = "block";
         locationSelect.style.display = "none";
         parkDetailRow.innerHTML = "";
-        parkTypeDropDown.selectedIndex = 0;
+        parkTypeDropDown.selectedIndex = 0; // Reset dropdown selection
     } else {
-        parkTypeSelect.style.display = "none";
+        parkTypeSelect.style.display = "none"; // Hide park type dropdown
     }
 }
 
-// Function when location dropdown changes
-function locationDropDownChange() {
+// Handle location dropdown change
+function handleLocationDropDownChange() {
     let selectedState = locationDropDown.value;
-    const parksFilter = nationalParksArray.filter(park => park.State === selectedState);
-    parkDetailRow.innerHTML = "";
+    const filteredParks = nationalParksArray.filter(park => park.State === selectedState);
+    parkDetailRow.innerHTML = ""; // Clear existing park details
 
-    if (parksFilter.length > 0) {
-        for (let park of parksFilter) {
+    if (filteredParks.length > 0) {
+        // Display cards for filtered parks
+        for (let park of filteredParks) {
             createNationalParkCard(park);
         }
     }
 }
 
-// Function when park type dropdown changes
-function parkTypeDropDownChange() {
+// Handle park type dropdown change
+function handleParkTypeDropDownChange() {
     let selectedType = parkTypeDropDown.value;
-    const parksType = nationalParksArray.filter(park => park.LocationName.includes(selectedType));
-    parkDetailRow.innerHTML = "";
+    const filteredParks = nationalParksArray.filter(park => park.LocationName.includes(selectedType));
+    parkDetailRow.innerHTML = ""; // Clear existing park details
 
-    if (parksType.length > 0) {
-        for (let park of parksType) {
+    if (filteredParks.length > 0) {
+        // Display cards for filtered parks
+        for (let park of filteredParks) {
             createNationalParkCard(park);
         }
     }
 }
 
-// Function to create cards, passing park values
+// Create cards with park details
 function createNationalParkCard(park) {
     let divCol = document.createElement("div");
     divCol.className = "col-6 mt-4";
@@ -107,7 +112,7 @@ function createNationalParkCard(park) {
     createListElement(unOrderedList, "parkState", "State", park.State);
 }
 
-// Function to create list elements
+// Create list elements with specified content
 function createListElement(parent, className, label, value) {
     let listItem = document.createElement("li");
     listItem.className = className;
