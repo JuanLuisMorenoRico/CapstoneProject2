@@ -21,3 +21,7 @@ Simple  website, designed to make exploring the great outdoors a breeze. Discove
 
   Mountain Search Page:
 ![Screenshot 2023-11-17 074517](https://github.com/JuanLuisMorenoRico/CapstoneProject2/assets/146771962/83c069d4-78f3-43d0-910e-b28f0bc1642e)
+
+Contact Info:
+email-123gojuan@gmail.com
+Phone-5108291303
